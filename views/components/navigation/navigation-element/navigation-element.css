@@ -1,0 +1,7 @@
+navigation-element {
+    position: absolute;
+
+    @screen lg {
+        position: relative;
+    }
+}

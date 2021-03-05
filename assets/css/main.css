@@ -1,0 +1,20 @@
+@import "tailwindcss/base.css";
+@import "tailwindcss/components.css";
+@import "tailwindcss/utilities.css";
+
+@import "./elements/navigation.css";
+
+.page-content {
+    max-width: 800px;
+    width: 100%;
+    flex-shrink: 1;
+}
+
+.page-content .prose {
+    width: 100%;
+    max-width: 100%;
+
+    h2 {
+        @apply pb-2 block border-b;
+    }
+}
