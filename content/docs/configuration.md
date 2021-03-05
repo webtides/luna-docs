@@ -103,7 +103,7 @@ component builds.
     static: {
         // An array of copy tasks
         sources: [ {
-            input: "assets/images/**/*", output: ".build/public/assets/images^"
+            input: "assets/images/**/*", output: ".build/public/assets/images"
         } ]
     }
 }

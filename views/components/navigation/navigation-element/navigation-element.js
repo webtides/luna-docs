@@ -27,7 +27,7 @@ export default class NavigationElement extends MoonElement {
             ${this.navigation.map(item => {
                 return html`
                     <nav class="space-y-2 mb-6">
-                        <div class="text-lg font-bold px-3">${item.title}</div>
+                        <div class="text-lg font-bold pr-3">${item.title}</div>
                         <ul class="space-y-1">
                             ${item.items.map(innerItem => {
                                 const currentUrl = `/${path.posix.join(item.path, innerItem.id)}`;
