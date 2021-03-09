@@ -3,6 +3,10 @@ title: "List of available hooks"
 ---
 # List of available hooks
 
+ - `MOON_INITIALIZE`: Called right before the global moon object is initialized. Here you can modify
+    the object
+    - `moon`: The global moon object.
+
  - `HOOKS_LOADED`: Will be called right after all hooks have been loaded.
 
  - `COMPONENTS_LOADED`: Called after all available components habe been loaded.  

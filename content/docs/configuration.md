@@ -81,6 +81,8 @@ component builds.
 ```js
 {
     buildDirectory: ".build/public/assets",
+    // The context path that moon-js prepends to the generated scripts.
+    context: '',
 
     styles: {
         // An array of style bundles that should be build

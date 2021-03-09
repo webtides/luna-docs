@@ -124,6 +124,18 @@ const get = async ({ request, response }) => {
 export { post, get };
 ```
 
+### Setting a different api domain
+
+To set a different asset domain, you can change the `context` and `domain` properties inside the `api` section of your [moon.config.js](/configuration#assets).
+
+```js
+{
+    api: {
+        domain: "<url-to-your-api-host>"
+        context: "<optional-context-path>"
+    }
+}
+```
 
 ## Hooks
 

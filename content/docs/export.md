@@ -87,3 +87,25 @@ You may have to install your npm dependencies in your exported directory.
 
 The `loadDynamicProperties` method cannot be called in a static context. If make a hybrid
  export of your application this method will be ignored.
+
+## Changing the api/asset context
+
+Your can override your configured `api` and `asset` context paths for your exports. To to so, specify these paths
+inside your `export` section.
+
+This way you can host your api and your static site on different domains.
+
+```js
+{
+    export: {
+        api: {
+            context: '',
+            domain: '<domain-of-your-hosted-api>'
+        },
+        assets: {
+            context: '',
+            domain: '<link-to-s3-or-similar>'
+        }
+    }
+}
+´``
