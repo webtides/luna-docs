@@ -5,6 +5,8 @@ const postcssPlugins = () => [
     require("postcss-nested")(),
 ];
 
+const production = process.env.NODE_ENV === 'production';
+
 module.exports = {
     buildDirectory: ".build",
     publicDirectory: ".build/public",
@@ -34,6 +36,9 @@ module.exports = {
     fallbackApiRoute: "/fallback",
 
     assets: {
+        domain: production ? 'https://d2x1hv6tzgwrbt.cloudfront.net' : '',
+        context: '',
+
         buildDirectory: ".build/public/assets",
 
         styles: {
@@ -55,6 +60,11 @@ module.exports = {
 
     export: {
         outputDirectory: ".export",
-        apiOutputDirectory: ".api"
+        apiOutputDirectory: ".api",
+
+        assets: {
+            domain: 'https://d2x1hv6tzgwrbt.cloudfront.net',
+            context: ''
+        }
     },
 }

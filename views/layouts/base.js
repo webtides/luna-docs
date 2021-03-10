@@ -5,8 +5,8 @@ const layout = (page, context = { }) => {
 
     context.head = [
         html`<meta charset="UTF-8" />`,
-        html`<link href="/assets/css/main.css?${now}" type="text/css" rel="stylesheet" />`,
-        html`<link href="/assets/css/base.css?${now}" type="text/css" rel="stylesheet" />`,
+        html`<link href="${moon.asset(`/assets/css/main.css?${now}`)}" type="text/css" rel="stylesheet" />`,
+        html`<link href="${moon.asset(`/assets/css/base.css?${now}`)}" type="text/css" rel="stylesheet" />`,
         html`<meta name="viewport" content="width=device-width, initial-scale=1">`
     ];
 
