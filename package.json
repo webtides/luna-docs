@@ -22,7 +22,6 @@
     "@webtides/moon-cli": "0.5.1",
     "cross-env": "^7.0.3",
     "postcss-nested": "^5.0.3",
-    "serverless": "^2.28.7",
     "tailwindcss": "^2.0.3"
   }
 }
