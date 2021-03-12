@@ -100,6 +100,10 @@ component builds.
             }
         } ]
     },
+    
+    routes: {
+        cacheable: []  
+    },
 
     // A configuration object for static resources (images, fonts, ...)
     static: {

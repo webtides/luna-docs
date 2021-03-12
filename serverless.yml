@@ -17,6 +17,7 @@ functions:
     package:
       exclude:
         - "*/*"
+        - ".build/public/**"
       include:
         - ".build/**"
         - "node_modules/**"
