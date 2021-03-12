@@ -136,6 +136,17 @@ To set a different asset domain, you can change the `context` and `domain` prope
     }
 }
 ```
+### Route parameters
+
+You can define dynamic parts of your url by surrounding the dynamic parts with
+square brackets. In your route, you can access the parameters over the `request.params` object.
+
+Example:
+
+Folder Path: `/users/[id].js` would register the route as `/users/:id`. In your `[id].js`,
+you have access to the id over `request.params.id`.
+
+If you access `/users/1`, your params object would be: `{ id: 1 }`.
 
 ## Middleware
 
