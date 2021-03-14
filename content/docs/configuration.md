@@ -3,13 +3,13 @@ title: "Configuration file"
 ---
 # Configuration file
 
-The central configuration file is called `moon.config.js` and needs to be
-present at the root (next to the package.json) of every moon-js project.
+The central configuration file is called `luna.config.js` and needs to be
+present at the root (next to the package.json) of every luna-js project.
 
 ## First start
 
-If you start moon-js for the first time via the cli, it will ask you
-if it should generate the `moon.config.js` and a default folder structure.
+If you start luna-js for the first time via the cli, it will ask you
+if it should generate the `luna.config.js` and a default folder structure.
 
 ## Areas
 
@@ -17,10 +17,10 @@ if it should generate the `moon.config.js` and a default folder structure.
 The port on which the application is running. Defaults to `3005`
 
 ### `buildDirectory`
-The directory in which moon-js should build your application.
+The directory in which luna-js should build your application.
 
 ### `publicDirectory`
-The directory in which moon-js copies your scripts required for the client
+The directory in which luna-js copies your scripts required for the client
 
 ### `pagesDirectory`
 An array of directories in which your pages are.
@@ -36,12 +36,12 @@ An example configuration object for components:
     basePath: path.join(__dirname, "views"),
     // The name of your components directory
     directory: 'components',
-    // The destination in which moon-js should output your
+    // The destination in which luna-js should output your
     // frontend assets. Should probably be inside your public directory.
     outputDirectory: ".build/public/assets",
     // A configuration object for css associated with this component bundle
     styles: {
-        // The destination in which moon-js should output your
+        // The destination in which luna-js should output your
         // styles. Should probably be inside your public directory.
         outputDirectory: ".build/public/assets/css",
         // The name of the file
@@ -81,7 +81,7 @@ component builds.
 ```js
 {
     buildDirectory: ".build/public/assets",
-    // The context path that moon-js prepends to the generated scripts.
+    // The context path that luna-js prepends to the generated scripts.
     context: '',
 
     styles: {
@@ -89,7 +89,7 @@ component builds.
         bundles: [{
             // The file(s) that should be used as an input file.
             input: [ path.join(__dirname, "assets/css/main.css") ],
-            // The destination in which moon-js should output your
+            // The destination in which luna-js should output your
             // styles. Should probably be inside your public directory.
             outputDirectory: ".build/public/assets/css",
             // The name of the generated css file

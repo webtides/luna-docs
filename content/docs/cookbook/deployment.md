@@ -6,26 +6,26 @@ title: "Deployment"
 
 ## Standard
 
-At its core moon-js is just a node application which uses express. As such
+At its core luna-js is just a node application which uses express. As such
 it can be deployed on every server which has support for node.
 
 [Here](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-16-04) is
 a nice documentation which explains how to setup a node application for production. The principles
-also apply to moon-js.
+also apply to luna-js.
 
-### Starting moon-js without the cli
+### Starting luna-js without the cli
 
-It is probably a good idea to deploy your application without the moon-cli, as it ships with
-a lot of development dependencies which are not needed for running moon-js. (But you don't have to).
+It is probably a good idea to deploy your application without the luna-cli, as it ships with
+a lot of development dependencies which are not needed for running luna-js. (But you don't have to).
 
-To start moon-js without the cli, you can simply run:
+To start luna-js without the cli, you can simply run:
 
-`node node_modules/@webtides/moon-js/start`
+`node node_modules/@webtides/luna-js/start`
 
 
 ## Serverless
 
-moon-js can easily be deployed using the [serverless framework](https://www.serverless.com/).
+luna-js can easily be deployed using the [serverless framework](https://www.serverless.com/).
 
 1. **Install the serverless framework**
 
@@ -34,17 +34,17 @@ See the [official documentation](https://www.serverless.com/framework/docs/).
 
 2. **Create a minimal serverless entry point.**
 
-To deploy your moon-js application on lambda, you have to wrap moon with
+To deploy your luna-js application on lambda, you have to wrap luna with
 `serverless-http`. This can be installed with `npm install --save-dev serverless-http`.
 
 ```js
 // serverless.js
 
 const serverless = require("serverless-http");
-const { prepareServer } = require("@webtides/moon-js/lib/packages/framework");
+const { prepareServer } = require("@webtides/luna-js/lib/packages/framework");
 
-const {callHook} = require("@webtides/moon-js/lib/packages/framework/hooks");
-const {HOOKS} = require("@webtides/moon-js/lib/packages/framework/hooks/definitions");
+const {callHook} = require("@webtides/luna-js/lib/packages/framework/hooks");
+const {HOOKS} = require("@webtides/luna-js/lib/packages/framework/hooks/definitions");
 
 module.exports.handler = async (event, context) => {
     const app = await prepareServer();

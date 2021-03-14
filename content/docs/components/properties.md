@@ -4,7 +4,7 @@ title: "Component properties"
 
 # Properties
 
-moon-js introduces a somewhat special property concept to load data at specific
+luna-js introduces a somewhat special property concept to load data at specific
 points in the application cycle and for different contexts (client|server).
 
 These special methods are only called on the server and are being

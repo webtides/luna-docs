@@ -1,12 +1,12 @@
-import { html } from "@webtides/moon-js";
+import { html } from "@webtides/luna-js";
 
 const layout = (page, context = { }) => {
     const now = Date.now();
 
     context.head = [
         html`<meta charset="UTF-8" />`,
-        html`<link href="${moon.asset(`/assets/css/main.css?${now}`)}" type="text/css" rel="stylesheet" />`,
-        html`<link href="${moon.asset(`/assets/css/base.css?${now}`)}" type="text/css" rel="stylesheet" />`,
+        html`<link href="${luna.asset(`/assets/css/main.css?${now}`)}" type="text/css" rel="stylesheet" />`,
+        html`<link href="${luna.asset(`/assets/css/base.css?${now}`)}" type="text/css" rel="stylesheet" />`,
         html`<meta name="viewport" content="width=device-width, initial-scale=1">`
     ];
 
@@ -14,7 +14,7 @@ const layout = (page, context = { }) => {
         <!doctype html>
         <html lang="">
             <head>
-                <title>moon-js - ${context.title ?? ""}</title>
+                <title>luna-js - ${context.title ?? ""}</title>
                 ${context.head ?? ""}
             </head>
             <body>
@@ -23,7 +23,7 @@ const layout = (page, context = { }) => {
                 </header>
                 <main class="flex min-h-screen">
                     <flyout-menu class="block main-navigation p-2 px-10 bg-gradient-to-b from-gray-700 to-gray-900 text-white">
-                        <a href="/" class="w-48 block logo-container py-6 pr-3 text-3xl font-bold">moon-js</a>
+                        <a href="/" class="w-48 block logo-container py-6 pr-3 text-3xl font-bold">luna-js</a>
 
                         <div>
                             <navigation-element></navigation-element>

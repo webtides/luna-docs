@@ -1,4 +1,4 @@
-service: moon-docs
+service: luna-docs
 
 provider:
   name: aws

@@ -7,11 +7,11 @@ title: Component Styles
 You can import your css files directly in your component files.
 
 ```js
-import { MoonElement, html } from "@webtides/moon-js";
+import { LunaElement, html } from "@webtides/luna-js";
 
 import "./example-component.css";
 
-export default class ExampleComponent extends MoonElement {
+export default class ExampleComponent extends LunaElement {
     template() {
         return html`
             <div class="container">
@@ -22,7 +22,7 @@ export default class ExampleComponent extends MoonElement {
 }
 ```
 
-The imported styles will extracted and bundled. The output file can be configured in your component bundle inside your [moon.config.js](/configuration#componentsdirectory).
+The imported styles will extracted and bundled. The output file can be configured in your component bundle inside your [luna.config.js](/configuration#componentsdirectory).
 
 ### Using styles inline
 
@@ -38,11 +38,11 @@ This can be useful for shadow rendered components where we can use the style han
 See the following example:
 
 ```
-import { MoonElement, html } from "@webtides/moon-js";
+import { LunaElement, html } from "@webtides/luna-js";
 
 import styles from "./shadow-component.css";
 
-export default class ShadowComponent extends MoonElement {
+export default class ShadowComponent extends LunaElement {
     constructor() {
         super({ shadowRender: true, styles: [ styles ] });
     }
@@ -71,7 +71,7 @@ An example configuration inside your *components bundle*:
 
 ```js
 styles: {
-    // The destination in which moon-js should output your
+    // The destination in which luna-js should output your
     // styles. Should probably be inside your public directory.
     outputDirectory: ".build/public/assets/css",
     // The name of the file

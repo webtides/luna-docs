@@ -1,4 +1,4 @@
-import {BaseElement} from "@webtides/moon-js";
+import {BaseElement} from "@webtides/luna-js";
 
 import "./flyout-backdrop.css";
 

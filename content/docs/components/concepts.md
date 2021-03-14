@@ -3,7 +3,7 @@ title: "Components"
 ---
 # Components
 
-Components are the main building block of moon-js. They allow a great
+Components are the main building block of luna-js. They allow a great
 level of encapsulation and abstraction while still being extremly flexible.
 
 ## Rendering Components
@@ -11,23 +11,23 @@ level of encapsulation and abstraction while still being extremly flexible.
 Components can be server-side rendered, client-side rendered or rendered
 on the server and be hydrated on the client.
 
-Components which render should extend the `MoonElement`, which extends the `StyledElement` from
+Components which render should extend the `LunaElement`, which extends the `StyledElement` from
 [@webtides/element-js](https://github.com/webtides/element-js). You can use all available methods and concepts
 from `element-js`.
 
 ### Engine
 
-As a rendering engine, moon-js uses [lit-html](https://lit-html.polymer-project.org/) on
+As a rendering engine, luna-js uses [lit-html](https://lit-html.polymer-project.org/) on
 the client side and [lit-html-server](https://github.com/popeindustries/lit-html-server)
 on the server side.
 
 Example component:
 ```js
-import {MoonElement, html} from "@webtides/moon-js";
+import {LunaElement, html} from "@webtides/luna-js";
 
 import "./header-element.css";
 
-export default class HeaderElement extends MoonElement {
+export default class HeaderElement extends LunaElement {
 
     template() {
         return html`
@@ -46,7 +46,7 @@ export default class HeaderElement extends MoonElement {
 Components that don't render can extends the `BaseElement` directly.
 
 ```js
-import {BaseElement} from "@webtides/moon-js";
+import {BaseElement} from "@webtides/luna-js";
 
 export default class ClientElement extends BaseElement {
     
@@ -59,12 +59,12 @@ export default class ClientElement extends BaseElement {
 
 ## Additional class methods
 
-moon-js provides a few additional methods in comparison to element-js:
+luna-js provides a few additional methods in comparison to element-js:
 
 ```js
-import {MoonElement, html} from "@webtides/moon-js";
+import {LunaElement, html} from "@webtides/luna-js";
 
-export default class HeaderElement extends MoonElement {
+export default class HeaderElement extends LunaElement {
     ...
 
     /**
