@@ -1,10 +1,10 @@
-import {html, MoonElement, unsafeHTML} from "@webtides/moon-js";
+import {html, LunaElement, unsafeHTML} from "@webtides/luna-js";
 import DocumentLoader from "../../app/document-loader";
 
 import layout from "../layouts/base";
 export { layout };
 
-export default class DocumentPage extends MoonElement {
+export default class DocumentPage extends LunaElement {
     async loadDynamicProperties({ request, response }) {
         const data = DocumentLoader.loadDocumentContentsById(request.params[0] ?? '');
 

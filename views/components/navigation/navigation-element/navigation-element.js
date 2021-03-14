@@ -1,10 +1,10 @@
-import {html, MoonElement} from "@webtides/moon-js";
+import {html, LunaElement} from "@webtides/luna-js";
 import { data } from "../../../../content/docs.md";
 import path from "path";
 
 import "./navigation-element.css";
 
-export default class NavigationElement extends MoonElement {
+export default class NavigationElement extends LunaElement {
 
     properties() {
         return {

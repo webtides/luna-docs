@@ -5,9 +5,9 @@ title: Static assets
 # Static assets
 
 Static assets, like fonts or images, need be be included in your output directory
-so that they can be served by moon-js.
+so that they can be served by luna-js.
 
-Inside your [moon.config.js](/configuration#assets), you can define an array
+Inside your [luna.config.js](/configuration#assets), you can define an array
 of assets which will be copied inside your output direcotry on build time.
 
 ```js
@@ -24,25 +24,25 @@ assets: {
 
 ## Using static assets
 
-If you ever plan to host your static assets on another domain as moon-js, you should use the `asset` helper
-of the global moon object.
+If you ever plan to host your static assets on another domain as luna-js, you should use the `asset` helper
+of the global luna object.
 
 ```js
-import { html } from "@webtides/moon-js";
+import { html } from "@webtides/luna-js";
 
 export default () => {
     return html`
-        <img src="${moon.asset("/assets/img/example-image.png")}" alt="An example image" />
+        <img src="${luna.asset("/assets/img/example-image.png")}" alt="An example image" />
     `;
 }
 ```
 
-The moon object is available globally inside the server context of your moon-js application. No need to import anything.
+The luna object is available globally inside the server context of your luna-js application. No need to import anything.
 
 
 ## Setting a different asset domain
 
-To set a different asset domain, you can change the `context` and `domain` properties inside the `assets` section of your [moon.config.js](/configuration#assets).
+To set a different asset domain, you can change the `context` and `domain` properties inside the `assets` section of your [luna.config.js](/configuration#assets).
 
 ```js
 {

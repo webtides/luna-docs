@@ -1,8 +1,8 @@
 const serverless = require("serverless-http");
-const { prepareServer } = require("@webtides/moon-js/lib/packages/framework");
+const { prepareServer } = require("@webtides/luna-js/lib/packages/framework");
 
-const {callHook} = require("@webtides/moon-js/lib/packages/framework/hooks");
-const {HOOKS} = require("@webtides/moon-js/lib/packages/framework/hooks/definitions");
+const {callHook} = require("@webtides/luna-js/lib/packages/framework/hooks");
+const {HOOKS} = require("@webtides/luna-js/lib/packages/framework/hooks/definitions");
 
 module.exports.handler = async (event, context) => {
     const app = await prepareServer();

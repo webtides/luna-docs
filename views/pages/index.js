@@ -1,4 +1,4 @@
-import { html, unsafeHTML } from "@webtides/moon-js";
+import { html, unsafeHTML } from "@webtides/luna-js";
 
 import text, { data } from "../../content/home.md";
 
