@@ -22,7 +22,7 @@ const layout = (page, context = { }) => {
                     
                 </header>
                 <main class="flex min-h-screen">
-                    <flyout-menu class="block main-navigation p-2 px-10 bg-indigo-500 text-white">
+                    <flyout-menu class="block main-navigation p-2 px-10 bg-gradient-to-b from-gray-700 to-gray-900 text-white">
                         <a href="/" class="w-48 block logo-container py-6 pr-3 text-3xl font-bold">moon-js</a>
 
                         <div>

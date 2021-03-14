@@ -25,8 +25,6 @@ After you have installed moon-js and the cli, run `moon --dev` to start moon-js 
 development mode. This will generate the basic files needed to get going and it will
 watch your files and restart your moon-js server after a file has been edited.
 
-If you add a new file, the watcher currently does not restart moon-js. You have to do it manually.
-
 moon-js starts your application on port `3005`, or on the port specified
 in your [moon.config.js](/configuration). You can now open `http://localhost:3005` to see
 the moon-js welcome page.

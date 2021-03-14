@@ -34,7 +34,7 @@ export default class NavigationElement extends MoonElement {
                                 return html`
                                     <li>
                                         <a href="${currentUrl}" 
-                                            class="${currentUrl === this.path ? "bg-indigo-400" : ""} block rounded-xl py-2 px-3 hover:bg-indigo-400">
+                                            class="${currentUrl === this.path ? "bg-gray-400" : ""} block rounded-xl py-2 px-3 hover:bg-gray">
                                             ${innerItem.title}
                                         </a>
                                     </li>

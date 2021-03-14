@@ -58,6 +58,12 @@ module.exports = {
         }
     },
 
+    routes: {
+        cacheable: [
+            /.*/
+        ]
+    },
+
     export: {
         outputDirectory: ".export",
         apiOutputDirectory: ".api",
