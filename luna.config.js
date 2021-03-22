@@ -59,9 +59,9 @@ module.exports = {
     },
 
     routes: {
-        cacheable: [
+        cacheable:  production ? [
             /.*/
-        ]
+        ] : []
     },
 
     export: {

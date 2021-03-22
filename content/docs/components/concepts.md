@@ -6,7 +6,11 @@ title: "Components"
 Components are the main building block of luna-js. They allow a great
 level of encapsulation and abstraction while still being extremly flexible.
 
-## Rendering Components
+## Concepts
+
+A detailed documentation of the basic concepts used can be found [in the element-js docs](https://github.com/webtides/element-js/tree/main/docs).
+
+## Rendering components
 
 Components can be server-side rendered, client-side rendered or rendered
 on the server and be hydrated on the client.
@@ -55,6 +59,36 @@ export default class ClientElement extends BaseElement {
     }
 }
 ```
+
+
+## Using components
+
+You can use a component by adding its tag name to your html. The tag name will
+be you component class name, but transformed to dash-case.
+
+```js
+// The element definition
+import { LunaElement, html } from "@webtides/luna-js";
+
+export default class TestElement extends LunaElement {
+    template() {
+        return html`
+            Test element
+        `;
+    }
+}
+```
+
+```html
+<!-- Using the element -->
+<main>
+    <test-element></test-element>
+</main>
+```
+
+## Properties
+
+Detailed information about component properties can be found [here](/components/properties)
 
 
 ## Additional class methods
@@ -134,8 +168,3 @@ export default class HeaderElement extends LunaElement {
     static get dynamicPropertiesCacheable() { return false; }
 }
 ```
-
-## Properties
-
-Detailed information about component properties can be found [here](/components/properties)
-
