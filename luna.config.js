@@ -1,65 +1,63 @@
 const path = require("path");
+const glob = require("glob");
 
 const postcssPlugins = () => [
-    require("tailwindcss")({ config: path.join(__dirname, "tailwind.config.js") }),
+    require("tailwindcss")({config: path.join(__dirname, "tailwind.config.js")}),
     require("postcss-nested")(),
 ];
 
 const production = process.env.NODE_ENV === 'production';
 
 module.exports = {
-    buildDirectory: ".build",
-    publicDirectory: ".build/public",
+    build: {
+        output: ".build",
+        livereload: true
+    },
 
-    pagesDirectory: [ path.join(__dirname, "views", "pages") ],
+    pages: {
+        input: [path.join(__dirname, "views", "pages")],
+        fallback: '/document'
+    },
 
-    componentsDirectory: [
-        {
-            basePath: path.join(__dirname, "views"),
-            directory: "components",
-            outputDirectory: ".build/public/assets",
+    components: {
+        bundles: [{
+            input: path.join(__dirname, "views/components"),
+            output: "assets",
 
             styles: {
-                outputDirectory: ".build/public/assets/css",
-                filename: "base.css",
-                postcssPlugins
+                output: "assets/css/base.css",
+                plugins: postcssPlugins
             }
-        }
-    ],
+        }]
+    },
 
-    hooksDirectory: [ path.join(__dirname, "hooks") ],
-    apisDirectory: [ path.join(__dirname, "api") ],
+    hooks: {
+        input: [path.join(__dirname, "hooks")],
+    },
 
-    legacyBuild: false,
-
-    fallbackRoute: "/document",
-    fallbackApiRoute: "/fallback",
+    api: {
+        input: [path.join(__dirname, "api")],
+    },
 
     assets: {
         domain: production ? 'https://d2x1hv6tzgwrbt.cloudfront.net' : '',
         context: '',
 
-        buildDirectory: ".build/public/assets",
-
         styles: {
             bundles: [{
-                input: [ path.join(__dirname, "assets/css/main.css") ],
-
-                outputDirectory: ".build/public/assets/css",
-                filename: "main.css",
-
-                postcssPlugins
-            } ]
+                input: [path.join(__dirname, "assets/css/main.css")],
+                output: "assets/css/main.css",
+                plugins: postcssPlugins
+            }]
         },
 
         static: {
-            sources: [
-            ]
+            sources: []
         }
     },
 
     routes: {
-        cacheable:  production ? [
+        cacheable: production ? [
             /.*/
         ] : []
     },
@@ -71,6 +69,18 @@ module.exports = {
         assets: {
             domain: 'https://d2x1hv6tzgwrbt.cloudfront.net',
             context: ''
+        },
+
+        entries: async () => {
+            const basePath = 'content/docs';
+
+            const files = glob.sync(`${basePath}/**/*`);
+
+            const routes = files
+                .map(file => file.substring(basePath.length))
+                .map(file => file.split('.md')[0]);
+
+            return [ '/', ...routes ];
         }
     },
 }

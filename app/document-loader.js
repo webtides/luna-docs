@@ -11,6 +11,10 @@ export default class DocumentLoader {
                 id = id.substring(1);
             }
 
+            if (id.endsWith('/')) {
+                id = id.substring(0, id.length - 1);
+            }
+
             const content = fs.readFileSync(`content/docs/${id}.md`, "utf-8");
             const result = frontmatter(content);
 

@@ -8,7 +8,7 @@ Static assets, like fonts or images, need be be included in your output director
 so that they can be served by luna-js.
 
 Inside your [luna.config.js](/configuration#assets), you can define an array
-of assets which will be copied inside your output direcotry on build time.
+of assets which will be copied inside your public directory on build time.
 
 ```js
 assets: {
@@ -16,7 +16,7 @@ assets: {
     static: {
         // An array of copy tasks
         sources: [ {
-            input: "assets/images/**/*", output: ".build/public/assets/images"
+            input: "assets/images/**/*", output: "assets/images"
         } ]
     }
 }
@@ -37,8 +37,8 @@ export default () => {
 }
 ```
 
-The luna object is available globally inside the server context of your luna-js application. No need to import anything.
-
+The `luna` object is available globally inside the server context of your luna-js application. No need to import anything. In the
+client context, the same `luna` object is available on the `window`.
 
 ## Setting a different asset domain
 

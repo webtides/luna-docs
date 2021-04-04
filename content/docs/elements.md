@@ -1,31 +1,54 @@
 ---
-title: "Components"
+title: "Elements"
 ---
-# Components
+# Elements
 
-Components are the main building block of luna-js. They allow a great
-level of encapsulation and abstraction while still being extremly flexible.
+Elements are the main building block of luna-js. They allow a great
+level of encapsulation and abstraction while still being extremly flexible. They extends
+the standard `HTMLElement` which is available in all browsers.
 
 ## Concepts
 
+Elements are one of the core concepts of luna-js. They are based on `@webtides/element-js` which is based on the WebComponents standard. 
+It's probably a good idea to skip through the element-js docs before continuing.
+
+Elements are classes which extend the `LunaElement` and are placed inside one of the `bundles` specified in the `components` section
+ of your `luna.config.js`. A component bundle contains the element definition and additional information about
+ the build. For example the css settings.
+
 A detailed documentation of the basic concepts used can be found [in the element-js docs](https://github.com/webtides/element-js/tree/main/docs).
 
-## Rendering components
+### Define a bundle in your `luna.config.js`
 
-Components can be server-side rendered, client-side rendered or rendered
+```
+components: {
+    bundles: [{
+        // The directory in which you define your elements
+        input: path.join(__dirname, "views/components"),
+        // The output directory, relative to your public directory
+        output: "assets",
+        
+        styles: {
+            // Where luna will put your bundled styles. Relative
+            // to your public directory.
+            output: "assets/css/base.css",
+            // A functions which returns an array of postcss plugins (e.g tailwind)
+            // used by you style build. 
+            plugins: () => []
+        }
+    }]
+},
+```
+
+## Render an element
+
+Elements can be server-side rendered, client-side rendered or rendered
 on the server and be hydrated on the client.
 
-Components which render should extend the `LunaElement`, which extends the `StyledElement` from
-[@webtides/element-js](https://github.com/webtides/element-js). You can use all available methods and concepts
-from `element-js`.
+To define a rendering element, create a class which extends the `LunaElement`. Without
+any extra configuration this element will pre-render on the server and hyrdate on the client.
 
-### Engine
-
-As a rendering engine, luna-js uses [lit-html](https://lit-html.polymer-project.org/) on
-the client side and [lit-html-server](https://github.com/popeindustries/lit-html-server)
-on the server side.
-
-Example component:
+Example element:
 ```js
 import {LunaElement, html} from "@webtides/luna-js";
 
@@ -45,9 +68,16 @@ export default class HeaderElement extends LunaElement {
 }
 ```
 
-## Non-rendering components
+### Render engine
 
-Components that don't render can extends the `BaseElement` directly.
+As a rendering engine, luna-js uses [lit-html](https://lit-html.polymer-project.org/) on
+the client side and [lit-html-server](https://github.com/popeindustries/lit-html-server)
+on the server side.
+
+
+## Non-rendering elements
+
+Elements that don't render can extends the `BaseElement` directly.
 
 ```js
 import {BaseElement} from "@webtides/luna-js";
@@ -61,10 +91,10 @@ export default class ClientElement extends BaseElement {
 ```
 
 
-## Using components
+## Using elements
 
-You can use a component by adding its tag name to your html. The tag name will
-be you component class name, but transformed to dash-case.
+You can use an element by adding its tag name to your html. The tag name will
+be you element class name, but transformed to dash-case.
 
 ```js
 // The element definition
@@ -86,10 +116,14 @@ export default class TestElement extends LunaElement {
 </main>
 ```
 
-## Properties
+## Loading data
 
-Detailed information about component properties can be found [here](/components/properties)
+Detailed information about loading data in an element can be found [here](/elements/properties)
 
+## Don't pass javascript to the client.
+
+You can define an element which is only rendered on the server, by returning `true` from the static `disableCSR` 
+getter inside your element. The code of this element won't be passed to the client.
 
 ## Additional class methods
 
@@ -115,8 +149,6 @@ export default class HeaderElement extends LunaElement {
      * Make sure to really only load data which is unique for every element on the page.
      *
      * Here we can make calls to the database or any other service with data we require on each page load.
-     *
-     * If we are statically exporting the site, these properties won't ever be loaded.
      *
      * @param {*}
      *

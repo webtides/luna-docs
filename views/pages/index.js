@@ -10,7 +10,6 @@ const layout = page => {
 
 export { layout };
 
-
 export default () => {
     return html`
         <div class="prose py-4">

@@ -1,17 +1,17 @@
 ---
-title: Component Styles
+title: Element Styles
 ---
 
-# Component Styles
+# Element Styles
 
 You can import your css files directly in your component files.
 
 ```js
 import { LunaElement, html } from "@webtides/luna-js";
 
-import "./example-component.css";
+import "./example-element.css";
 
-export default class ExampleComponent extends LunaElement {
+export default class ExampleElement extends LunaElement {
     template() {
         return html`
             <div class="container">
@@ -22,27 +22,28 @@ export default class ExampleComponent extends LunaElement {
 }
 ```
 
-The imported styles will extracted and bundled. The output file can be configured in your component bundle inside your [luna.config.js](/configuration#componentsdirectory).
+The imported styles will extracted and bundled. The output file can be configured in your component bundle inside your [luna.config.js](/configuration).
 
 ### Using styles inline
 
 If you don't want your imported styles being bundled, but rather returned as a string from your import, you just have to assign the import a variable.
 
 ```js
-import styles from "./example-component.js";
+import styles from "./example-element.js";
 ```
 
 The `styles` variable now contains the css as a string. All postcss processors work like they normally do, so you will get a processed css string.
+The styles from this file won't be extracted into the css file.
 
 This can be useful for shadow rendered components where we can use the style handling of [element-js](https://github.com/webtides/element-js/tree/main/docs#styles-1).  
 See the following example:
 
-```
+```js
 import { LunaElement, html } from "@webtides/luna-js";
 
-import styles from "./shadow-component.css";
+import styles from "./shadow-element.css";
 
-export default class ShadowComponent extends LunaElement {
+export default class ShadowElement extends LunaElement {
     constructor() {
         super({ shadowRender: true, styles: [ styles ] });
     }
@@ -57,7 +58,7 @@ export default class ShadowComponent extends LunaElement {
     
     /**
      * Rendering inside the shadow root is not possible on the server,
-     * so we have to disable server side rendering for this component.
+     * so we have to disable server side rendering for this element.
      */
     static get disableSSR() {
         return true;
@@ -67,18 +68,16 @@ export default class ShadowComponent extends LunaElement {
 
 ## Configuration
 
-An example configuration inside your *components bundle*:
+An example configuration inside your *component bundle*:
 
 ```js
 styles: {
     // The destination in which luna-js should output your
-    // styles. Should probably be inside your public directory.
-    outputDirectory: ".build/public/assets/css",
-    // The name of the file
-    filename: "base.css",
+    // styles. Relative to the public directory
+    output: "assets/css/base.css",
     // A functions which returns an array of postcss plugins (e.g tailwind)
     // used by you style build. 
-    postcssPlugins: () => {
+    plugins: () => {
         return [
             require("tailwindcss")
         ]

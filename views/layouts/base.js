@@ -5,8 +5,8 @@ const layout = (page, context = { }) => {
 
     context.head = [
         html`<meta charset="UTF-8" />`,
-        html`<link href="${luna.asset(`/assets/css/main.css?${now}`)}" type="text/css" rel="stylesheet" />`,
-        html`<link href="${luna.asset(`/assets/css/base.css?${now}`)}" type="text/css" rel="stylesheet" />`,
+        html`<link href="${luna.asset(`/assets/css/main.css`)}" type="text/css" rel="stylesheet" />`,
+        html`<link href="${luna.asset(`/assets/css/base.css`)}" type="text/css" rel="stylesheet" />`,
         html`<meta name="viewport" content="width=device-width, initial-scale=1">`
     ];
 

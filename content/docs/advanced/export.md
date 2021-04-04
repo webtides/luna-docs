@@ -13,14 +13,14 @@ The following command exports you complete application as a static site:
 luna --export
 ```
 
-Before you can export your site, you have to set you `outputDirectory` inside
-your `luna.config.js`.
+Before you can export your site, you have to set you `output` inside
+your `luna.config.js`. Defaults to `.export`.
 
 ```
 {
     ...,
     export: {
-        outputDirectory: ".export"    
+        output: ".export"    
     },
     ...
 }
@@ -28,8 +28,8 @@ your `luna.config.js`.
 
 ### Gotchas
 
-The `loadDynamicProperties` method cannot be called in a static context. If you export
-your application as a static site this method will be ignored.
+The `loadDynamicProperties` method cannot be called in a static context. If you
+export your page as a static site, it will only be called once on the export.
 
 
 ## Api generator
@@ -42,16 +42,23 @@ To generate an api server, you can use the follwing command:
 ```
 luna --export=api
 ```
-Before you can export your api, you have to set your `apiOutputDirectory` inside
-your `luna.config.js`. If `apiOutputDirectory` is not set, `luna-js` will fall back
-to `outputDirectory`.
+
+You can configure where your exported api shoulld be saved. Defaults to the
+defined export output. To change the location or the name of the generated api
+export, set the `output` object inside your export section of your luna.config.js
 
 ```
 {
     ...,
     export: {
-        outputDirectory: ".export",
-        apiOutputDirectory: ".api"
+        output: ".export",
+        
+        api: {
+            output: {
+                directory: ".api",
+                filename: "api-server.js"
+            }
+        }
     },
     ...
 }
@@ -59,7 +66,7 @@ to `outputDirectory`.
 
 ## Hybrid export
 
-A hybric export is useful for serverless environments or if you generated
+A hybrid export is useful for serverless environments or if you generated
 your static site, but don't want to loose all your serverside functionality.
 `luna-js` will generate a static site and export an express application
 which is configured to serve your exported static site and your api.
@@ -86,7 +93,7 @@ You may have to install your npm dependencies in your exported directory.
 ### Gotchas
 
 The `loadDynamicProperties` method cannot be called in a static context. If make a hybrid
- export of your application this method will be ignored.
+ export of your application, it will only be called once on the export.
 
 ## Changing the api/asset context
 

@@ -26,13 +26,9 @@ assets: {
             input: [ path.join(__dirname, "assets/css/main.css") ],
             // The destination in which luna-js should output your
             // styles. Should probably be inside your public directory.
-            outputDirectory: ".build/public/assets/css",
-            // The name of the generated css file
-            filename: "main.css",
+            output: "assets/css/main.css",
             // An function returning an array of additional postcss plugins
-            postcssPlugins: () => {
-                return [];
-            }
+            plugins: () => []
         } ]
     }
 }

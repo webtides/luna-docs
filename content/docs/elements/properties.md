@@ -1,8 +1,8 @@
 ---
-title: "Component properties"
+title: "Loading data"
 ---
 
-# Properties
+# Loading data
 
 luna-js introduces a somewhat special property concept to load data at specific
 points in the application cycle and for different contexts (client|server).

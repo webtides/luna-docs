@@ -13,6 +13,9 @@ it can be deployed on every server which has support for node.
 a nice documentation which explains how to setup a node application for production. The principles
 also apply to luna-js.
 
+All your application logic will be bundled inside the the `build` directory so in most cases
+you don't have to deploy your `pages`, `api`, `hooks` or `components` directly.
+
 ### Starting luna-js without the cli
 
 It is probably a good idea to deploy your application without the luna-cli, as it ships with
@@ -41,10 +44,10 @@ To deploy your luna-js application on lambda, you have to wrap luna with
 // serverless.js
 
 const serverless = require("serverless-http");
-const { prepareServer } = require("@webtides/luna-js/lib/packages/framework");
+const { prepareServer } = require("@webtides/luna-js/lib/framework");
 
-const {callHook} = require("@webtides/luna-js/lib/packages/framework/hooks");
-const {HOOKS} = require("@webtides/luna-js/lib/packages/framework/hooks/definitions");
+const {callHook} = require("@webtides/luna-js/lib/framework/hooks");
+const {HOOKS} = require("@webtides/luna-js/lib/framework/hooks/definitions");
 
 module.exports.handler = async (event, context) => {
     const app = await prepareServer();

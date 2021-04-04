@@ -20,8 +20,9 @@ as close to the platform as possible.
 - Api generation
 - Polyfills
 
-**Important**: luna-js is currently in an early development phase To get access to
-luna-js feel free to contact us under [ls@19f.de](mailto:ls@19f.de).
+luna-js is currently in an early development phase. As such we are continously improving
+it. We cannot guarantee that there will be no breaking changes in the future. Use in production
+at your own risk.
 
 ## Getting started
 
