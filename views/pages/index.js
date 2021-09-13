@@ -1,5 +1,3 @@
-import { html, unsafeHTML } from "@webtides/luna-js";
-
 import text, { data } from "../../content/home.md";
 
 import factory from "../layouts/base";
@@ -11,9 +9,9 @@ const layout = page => {
 export { layout };
 
 export default () => {
-    return html`
+    return `
         <div class="prose py-4">
-            ${unsafeHTML(text)}
+            ${text}
         </div>
     `;
 };

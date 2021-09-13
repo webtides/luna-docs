@@ -62,7 +62,10 @@ module.exports = {
                 // A functions which returns an array of postcss plugins (e.g tailwind)
                 // used by you style build. 
                 plugins: () => []
-            }
+            },
+            
+            // Should the element be rendered on the client or server or both
+            defaultTarget: 'server' // 'client', 'both'
         }]
     },
     
@@ -94,7 +97,7 @@ module.exports = {
         static: {
             // An array of copy tasks
             sources: [ {
-                input: "assets/images/**/*", output: ".build/public/assets/images^"
+                input: "assets/images/**/*", output: "assets/images^"
             } ]
         }
     },

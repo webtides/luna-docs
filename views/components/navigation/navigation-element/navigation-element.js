@@ -1,17 +1,9 @@
-import {html, LunaElement} from "@webtides/luna-js";
 import { data } from "../../../../content/docs.md";
 import path from "path";
 
 import "./navigation-element.css";
 
-export default class NavigationElement extends LunaElement {
-
-    properties() {
-        return {
-            navigation: []
-        };
-    }
-
+export default class NavigationElement {
     static async loadStaticProperties() {
         return data;
     }
@@ -22,16 +14,16 @@ export default class NavigationElement extends LunaElement {
         }
     }
 
-    template() {
-        return html`
+    get template() {
+        return `
             ${this.navigation.map(item => {
-                return html`
+                return `
                     <nav class="space-y-2 mb-6">
                         <div class="text-md font-bold">${item.title}</div>
                         <ul class="space-y-1">
                             ${item.items.map(innerItem => {
                                 const currentUrl = `/${path.posix.join(item.path, innerItem.id)}`;
-                                return html`
+                                return `
                                     <li>
                                         <a href="${currentUrl}" 
                                             class="${this.path === currentUrl ? 'text-white' : 'text-gray-300'} text-sm block rounded-xl py-1 hover:text-white">
@@ -39,15 +31,11 @@ export default class NavigationElement extends LunaElement {
                                         </a>
                                     </li>
                                 `;
-                            })}
+                            }).join('')}
                         </ul>
                     </nav>
                 `;   
-            })}
+            }).join('')}
         `;
-    }
-
-    static get disableCSR() {
-        return true;
     }
 }

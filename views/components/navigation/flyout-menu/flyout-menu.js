@@ -1,42 +1,38 @@
-import {BaseElement} from "@webtides/luna-js";
+import {Component} from "@webtides/luna-js";
 
-export default class FlyoutMenu extends BaseElement {
+@Component({
+    target: Component.TARGET_CLIENT,
+})
+export default class FlyoutMenu extends HTMLElement {
 
-    connected() {
+    visible = false;
+
+    connectedCallback() {
         setTimeout(() => {
             this.classList.add('connected');
         }, 200);
     }
 
-    properties() {
-        return {
-            visible: false
-        };
+    attachEvents() {
+        this.addEventListener('click', (ev) => {
+            if (ev.currentTarget === this) {
+                this.toggleVisibility();
+            }
+        });
+
+        window.addEventListener('close-navigation', ev => {
+            this.visible = false;
+            this.setVisibility();
+        })
     }
 
-    watch() {
-        return {
-            visible: () => {
-                this.classList.toggle("visible", this.visible);
-                document.querySelector('flyout-backdrop').classList.toggle("visible", this.visible);
-            }
-        }
+    toggleVisibility() {
+        this.visible = !this.visible;
+        this.setVisibility();
     }
 
-    events() {
-        return {
-            this: {
-                click: ev => {
-                    if (ev.currentTarget === this) {
-                        this.visible = !this.visible;
-                    }
-                }
-            },
-            window: {
-                'close-navigation': ev => {
-                    this.visible = false;
-                }
-            }
-        }
+    setVisibility() {
+        this.classList.toggle("visible", this.visible);
+        document.querySelector('flyout-backdrop').classList.toggle("visible", this.visible);
     }
 }

@@ -12,7 +12,7 @@ The hook can either be synchronous or asynchronous.
 
 ### Example of the `SERVER_STARTED` hook:
 ```js
-import {HOOKS} from "@webtides/luna-js/lib/framework/hooks/definitions";
+import {HOOKS} from "@webtides/luna-js/src/framework/hooks/definitions";
 
 const name = HOOKS.SERVER_STARTED;
 export { name };
@@ -24,7 +24,7 @@ export default () => {
 
 ### Example of the `REQUEST_RECEIVED` hook:
 ```js
-import {HOOKS} from "@webtides/luna-js/lib/framework/hooks/definitions";
+import {HOOKS} from "@webtides/luna-js/src/framework/hooks/definitions";
 
 const name = HOOKS.REQUEST_RECEIVED;
 export { name };

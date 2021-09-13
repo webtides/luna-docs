@@ -28,10 +28,8 @@ If you ever plan to host your static assets on another domain as luna-js, you sh
 of the global luna object.
 
 ```js
-import { html } from "@webtides/luna-js";
-
 export default () => {
-    return html`
+    return `
         <img src="${luna.asset("/assets/img/example-image.png")}" alt="An example image" />
     `;
 }

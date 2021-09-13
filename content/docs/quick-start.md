@@ -21,7 +21,7 @@ The cli should be installed as a development depency. Run:
 
 ## First start
 
-After you have installed luna-js and the cli, run `luna --dev` to start luna-js in
+After you have installed luna-js and the cli, run `npx luna --dev` to start luna-js in
 development mode. This will generate the basic files needed to get going and it will
 watch your files and restart your luna-js server after a file has been edited.
 
@@ -31,4 +31,5 @@ the luna-js welcome page.
 
 ## Core concepts
 
-Before getting started, you should make yourself familiar with the [core concepts of luna-js](/concepts).
+Before getting started, you should make yourself familiar with the basic concepts of 
+luna-js.

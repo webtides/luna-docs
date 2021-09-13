@@ -49,25 +49,9 @@ async loadDynamicProperties({ request, response }) {
 
 ## Making properties available on the client
 
-Loading dynamic or static properties do not make them automatically available on the client.
-To make these properties available on the client, you have to define them as
-actual properties, by returning the definitions from the `properties()` method.
-
-
-Example:
-```js
-properties() {
-    return {
-        products []
-    };
-}
-
-static async loadStaticProperties() {
-    const {productService} = await import('./product-service.js');
-    const products = await productService.loadProducts();
-    return { products };
-}
-```
+Which properties are made available to the client depends on the `renderer` that is being used. The default renderer
+for basic `HTMLElement` makes, in addition to the attributes, all properties available to the client which are loaded
+using the `loadDynamicProperties` or `loadStaticProperties` methods.
 
 **Important**: The properties that are being made available on the client must be serializable.
-Because they will be rendered as actual properties on the HtmlElement.
+Because they will be rendered as attributes on the HTMLElement.

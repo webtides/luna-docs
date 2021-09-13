@@ -19,11 +19,12 @@ you don't have to deploy your `pages`, `api`, `hooks` or `components` directly.
 ### Starting luna-js without the cli
 
 It is probably a good idea to deploy your application without the luna-cli, as it ships with
-a lot of development dependencies which are not needed for running luna-js. (But you don't have to).
+a lot of development dependencies which are not required for running luna-js. (But you don't have to).
 
-To start luna-js without the cli, you can simply run:
+To start luna-js without the cli, you can simply run the generated `start` script inside your build
+folder.
 
-`node node_modules/@webtides/luna-js/start`
+`node .build/generated/start.js`
 
 
 ## Serverless
@@ -44,10 +45,10 @@ To deploy your luna-js application on lambda, you have to wrap luna with
 // serverless.js
 
 const serverless = require("serverless-http");
-const { prepareServer } = require("@webtides/luna-js/lib/framework");
+const { prepareServer } = require("@webtides/luna-js/src/framework");
 
-const {callHook} = require("@webtides/luna-js/lib/framework/hooks");
-const {HOOKS} = require("@webtides/luna-js/lib/framework/hooks/definitions");
+const {callHook} = require("@webtides/luna-js/src/framework/hooks");
+const {HOOKS} = require("@webtides/luna-js/src/framework/hooks/definitions");
 
 module.exports.handler = async (event, context) => {
     const app = await prepareServer();

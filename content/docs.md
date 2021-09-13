@@ -6,8 +6,8 @@ navigation:
       items:
         - id: 'quick-start'
           title: 'Quick start'
-        - id: 'elements'
-          title: 'Elements'
+        - id: 'components'
+          title: 'Components'
         - id: 'routing'
           title: 'Routing'
         - id: 'pages'
@@ -22,9 +22,9 @@ navigation:
       items:
         - id: 'layouts'
           title: 'Layouts'
-    - id: 'elements'
-      path: 'elements'
-      title: 'Elements'
+    - id: 'components'
+      path: 'components'
+      title: 'Components'
       items:
         - id: 'properties'
           title: 'Loading data'
@@ -52,6 +52,8 @@ navigation:
       items:
         - id: 'export'
           title: 'Export'
+        - id: 'renderers'
+          title: 'Custom renderers'
     - id: 'cookbook'
       path: 'cookbook'
       title: 'Cookbook'

@@ -1,19 +1,17 @@
 ---
-title: Element Styles
+title: Component Styles
 ---
 
-# Element Styles
+# Component Styles
 
 You can import your css files directly in your component files.
 
 ```js
-import { LunaElement, html } from "@webtides/luna-js";
-
 import "./example-element.css";
 
-export default class ExampleElement extends LunaElement {
-    template() {
-        return html`
+export default class ExampleElement extends HTMLElement {
+    get template() {
+        return `
             <div class="container">
                 An example
             </div>
@@ -35,33 +33,23 @@ import styles from "./example-element.js";
 The `styles` variable now contains the css as a string. All postcss processors work like they normally do, so you will get a processed css string.
 The styles from this file won't be extracted into the css file.
 
-This can be useful for shadow rendered components where we can use the style handling of [element-js](https://github.com/webtides/element-js/tree/main/docs#styles-1).  
-See the following example:
+This can be useful for shadow rendered components where the style block can be
+included inside the shadow root.
 
 ```js
-import { LunaElement, html } from "@webtides/luna-js";
-
 import styles from "./shadow-element.css";
 
-export default class ShadowElement extends LunaElement {
-    constructor() {
-        super({ shadowRender: true, styles: [ styles ] });
-    }
-    
-    template() {
-        return html`
-            <div class="container">
-                I am inside the shadow root.
-            </div>
+export default class ShadowElement extends HTMLElement {
+    get template() {
+        return `
+            <template shadowroot="open">
+                <div class="container">
+                    I am inside the shadow root.
+                </div>
+                
+                <style>${styles}</style>
+            </template>
         `;
-    }
-    
-    /**
-     * Rendering inside the shadow root is not possible on the server,
-     * so we have to disable server side rendering for this element.
-     */
-    static get disableSSR() {
-        return true;
     }
 }
 ```

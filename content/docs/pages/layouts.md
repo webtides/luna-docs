@@ -7,10 +7,8 @@ skeleton for each page. The layout would be the perfect place to load
 your styles or external scripts.
 
 ```js
-import { html } from "@webtides/luna-js";
-
 export default (page, context = { }) => {
-    return html`
+    return `
         <!doctype html>
         <html lang="">
             <head>
@@ -34,13 +32,11 @@ export default (page, context = { }) => {
 To use a layout, you simply have to export it as `layout` from your page file.
 
 ```js
-import { html } from "@webtides/luna-js";
-
 import layout from "../layouts/base.js";
 export { layout };
 
 export default () => {
-    return html`
+    return `
         <h1>A page with a layout</h1>
     `;
 }
@@ -53,7 +49,6 @@ page title would be a good example.
 You can pass additional data to a layout by using the context parameter.
 
 ```js
-import { html } from "@webtides/luna-js";
 
 import layoutFactory from "../layouts/base.js";
 const layout = (page) => {
@@ -64,37 +59,10 @@ const layout = (page) => {
 export { layout };
 
 export default () => {
-    return html`
+    return `
         <h1>A page with a layout</h1>
     `;
 }
 ```
 
-### Pass additional data from a `LunaElement` page
-
-If you define your page using a `LunaElement`, the context of your `class` will
-be passed into the layout. The page above would look like this as a `LunaElement`.
-
-```js
-import { LunaElement, html } from "@webtides/luna-js";
-
-import layout from "../layouts/base.js";
-export { layout };
-
-export default class Page extends LunaElement {
-    title = "My page title";
-
-    template() {
-        return html`
-            <h1>A page with a layout</h1>
-        `;
-    }
-
-}
-```
-
-
-## The default layout
-
-If you don't specifically set a layout for a page, the page
-will use the default layout that ships with luna-js.
+You have to export a layout from a page. There is no default layout.

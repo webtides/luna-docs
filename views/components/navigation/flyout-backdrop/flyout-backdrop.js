@@ -1,16 +1,13 @@
-import {BaseElement} from "@webtides/luna-js";
-
+import { Component } from '@webtides/luna-js';
 import "./flyout-backdrop.css";
 
-export default class FlyoutBackdrop extends BaseElement {
-
-    events() {
-        return {
-            this: {
-                click: ev => {
-                    this.dispatch('close-navigation', {}, true);
-                }
-            }
-        }
+@Component({
+    target: Component.TARGET_CLIENT,
+})
+export default class FlyoutBackdrop extends HTMLElement {
+    connectedCallback() {
+        this.dispatchEvent(new CustomEvent('close-navigation', {
+            bubbles: true
+        }));
     }
 }

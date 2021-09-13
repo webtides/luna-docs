@@ -44,7 +44,7 @@ export { post, get };
 
 ## Setting a different api domain
 
-To set a different asset domain, you can change the `context` and `domain` properties inside the `api` section of your [luna.config.js](/configuration#assets).
+To set a different api domain, you can change the `context` and `domain` properties inside the `api` section of your [luna.config.js](/configuration#assets).
 
 ```js
 {
