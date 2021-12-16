@@ -12,7 +12,6 @@ in your application lifecycle and render the dynamically loaded content.
 
 ## Pages
 
-
 This is the most minimal way to define a page.
 
 ```js
@@ -26,27 +25,32 @@ export default () => {
 }
 ```
 
-### Dynamic pages
+### Component pages
 
-Dynamic pages can load additional content on each request or only once, when luna-js
-registers the page.
+Component pages share the same syntax with your other components and can use the same lifecycle methods. They won`t be
+passed to the client though. 
 
-#### Load content on each request
+You can read more about components in [the components section](/components).
 
 ```js
-import auth from "../auth-service.js";
-import layout from "../layouts/base.js";
-export { layout };
-
-export default async ({ request, response }) {
-    const { name } = await auth.getCurrentUser();
+export default class {
+    static async loadStaticProperties({ request, response }) {
+        return {
+            static: true,
+        };
+    }
     
-    return `
-        <h1>Hello, ${name}</h1>
-    `;
+    async loadDynamicProperties({ request, response }) {
+        return {
+            dynamic: true,
+        };
+    }
+    
+    get template() {
+        return `<h1>This is a component page</h1>`;
+    }
 }
 ```
 
-*In this example we are loading the current user on each request
- from an authentication service and then we will display the name of the user
-on the page. The page will not be cached.*
+The `loadDynamicProperties` method can be used to load data on each request. `loadStaticProperties` can be used
+to load data once at luna startup.

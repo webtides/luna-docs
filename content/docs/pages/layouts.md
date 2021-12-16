@@ -6,7 +6,25 @@ A layout can be shared between a set of pages and includes the
 skeleton for each page. The layout would be the perfect place to load
 your styles or external scripts.
 
+## Define layouts
+
+Layouts will be loaded from the path that you have defined in the `layouts` block inside your `luna.config.js`. 
+Each file corresponds to one layout.
+
 ```js
+// luna.config.js
+layouts: {
+    input: [path.join(__dirname, "views/layouts")]
+}
+```
+
+## Default layout
+
+To define a default layout, just name your layout file `default.js`. This layout will be applied to all pages
+where it hasn't been overridden.
+
+```js
+// default.js
 export default (page, context = { }) => {
     return `
         <!doctype html>
@@ -26,14 +44,16 @@ export default (page, context = { }) => {
     `;
 };
 ```
+*Example of a layout file*
 
 ## Use a layout
 
-To use a layout, you simply have to export it as `layout` from your page file.
+To use a different layout from the default one, you have to define the name of the layout file.
 
 ```js
-import layout from "../layouts/base.js";
-export { layout };
+export function layout() {
+    return 'blog'
+};
 
 export default () => {
     return `
@@ -41,22 +61,38 @@ export default () => {
     `;
 }
 ```
+*In this example we would load the `blog.js` file inside your layouts directory*
+
+### Using page components
+
+```js
+export default class {
+    layout() {
+        return 'members';
+    }
+    
+    get template() {
+        return `<h1>Members area</h1>`;
+    }
+}
+```
+*In this example we are loading the `members.js` layout file.*
 
 ## Pass additional data to the layout
 
 Sometimes there a little parts of your layout that can be different for each page. The
 page title would be a good example.
-You can pass additional data to a layout by using the context parameter.
+
+### Export context function
+
+One way to achieve this is to create a `context` function and export it.
 
 ```js
-
-import layoutFactory from "../layouts/base.js";
-const layout = (page) => {
-    return layoutFactory(page, {
-        title: "My page title"
-    });
+export async function context() {
+    return {
+        title: "My page title",
+    };
 };
-export { layout };
 
 export default () => {
     return `
@@ -65,4 +101,46 @@ export default () => {
 }
 ```
 
-You have to export a layout from a page. There is no default layout.
+### Using the page component context
+
+Inside a page component, the `this` context of the component will be passed along as context to the layout.
+
+```js
+// The page component.
+export default class {
+    title = "My page title";
+    
+    layout() {
+        return 'members';
+    }
+    
+    async loadDynamicProperties() {
+        const user = await userService.current();
+        
+        return {
+            currentUserName: user.name,
+        };
+    }
+    
+    get template() {
+        return `
+            My page component.
+        `
+    }
+}
+```
+
+```js
+// The members.js layout file
+export default (page, context = {}) => {
+    return `
+        <!doctype html>
+        <html lang="">
+            <head>
+                <!-- context.title will be "My page title". -->
+                <!-- context.currentUserName will be the same as returned from 'loadDynamicProperties' -->
+                <title>luna-js - ${context.title ?? ""} - ${context.currentUserName ?? ''}</title>
+        ...
+    `;
+};
+```

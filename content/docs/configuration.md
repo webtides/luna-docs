@@ -31,8 +31,15 @@ module.exports = {
     },
     
     pages: {
-        // An array of directories in which your pages / routes are.
-        input: [ path.join(__dirname, "views/pages") ]
+        // An array of directories in which you can define your pages / routes.
+        input: [ path.join(__dirname, "views/pages") ],
+        // The element factory which should be used to render component pages.
+        factory: () => require('@webtides/element-renderer/lib/element-js')
+    },
+    
+    layouts: {
+        // An array of directories in which you can define your layouts.
+        input: [ path.join(__dirname, "views/layouts" )]
     },
     
     hooks: {
@@ -41,7 +48,7 @@ module.exports = {
     },
     
     api: {
-        // An array of directories in which you define your api.
+        // An array of directories in which you define your api routes.
         input: [ path.join(__dirname, "api") ],
         
         // The context path of your api. Defaults to /api.
@@ -65,7 +72,10 @@ module.exports = {
             },
             
             // Should the element be rendered on the client or server or both
-            defaultTarget: 'server' // 'client', 'both'
+            defaultTarget: 'server', // 'client', 'both'
+
+            // The element factory which should be used to render components.
+            factory: () => require('@webtides/element-renderer/lib/element-js')
         }]
     },
     
