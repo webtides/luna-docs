@@ -33,15 +33,15 @@ can even use multiple parameters for a single route.
 ### Access parameters from a dynamic route
 
 You can access the parameters inside the `loadDynamicProperties` hook of any
-server rendered `LunaElement`. The `LunaElement` can either be a page or a component.
+server rendered component.
 
 ```js
 // users/[username].js
-import { LunaElement } from "@webtides/luna-js";
 
-export default class UserDetailsPage extends LunaElement {
+export default class UserDetailsPage {
     async loadDynamicProperties({ request }) {
         const { username } = request.params;
+        return { username };
     }
 }
 ```

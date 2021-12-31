@@ -1,8 +1,5 @@
 import DocumentLoader from "../../app/document-loader";
 
-import layout from "../layouts/base";
-export { layout };
-
 export default async ({ request, response }) => {
     const data = DocumentLoader.loadDocumentContentsById(request.params[0] ?? '');
 

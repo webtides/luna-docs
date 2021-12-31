@@ -52,8 +52,8 @@ navigation:
       items:
         - id: 'export'
           title: 'Export'
-        - id: 'renderers'
-          title: 'Custom renderers'
+        - id: 'factories'
+          title: 'Custom factories'
     - id: 'cookbook'
       path: 'cookbook'
       title: 'Cookbook'

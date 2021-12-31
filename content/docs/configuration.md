@@ -33,8 +33,8 @@ module.exports = {
     pages: {
         // An array of directories in which you can define your pages / routes.
         input: [ path.join(__dirname, "views/pages") ],
-        // The element factory which should be used to render component pages.
-        factory: () => require('@webtides/element-renderer/lib/element-js')
+        // The element factory which should be used to build and render component pages on the server.
+        factory: require('@webtides/element-renderer/lib/element-js')
     },
     
     layouts: {
@@ -74,8 +74,8 @@ module.exports = {
             // Should the element be rendered on the client or server or both
             defaultTarget: 'server', // 'client', 'both'
 
-            // The element factory which should be used to render components.
-            factory: () => require('@webtides/element-renderer/lib/element-js')
+            // The element factory which should be used to build and render components on the server.
+            factory: require('@webtides/element-renderer/lib/element-js')
         }]
     },
     

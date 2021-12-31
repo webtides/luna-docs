@@ -1,17 +1,18 @@
 import text, { data } from "../../content/home.md";
 
-import factory from "../layouts/base";
+export default class {
 
-const layout = page => {
-    return factory(page, data);
-};
+    static async loadStaticProperties() {
+        return {
+            data,
+        };
+    }
 
-export { layout };
-
-export default () => {
-    return `
-        <div class="prose py-4">
-            ${text}
-        </div>
-    `;
-};
+    get template() {
+        return `
+            <div class="prose py-4">
+                ${text}
+            </div>
+        `;
+    }
+}

@@ -7,7 +7,7 @@ your defined `pages` directories.
 
 You can learn more about routes in [the routing section](/routing).
 
-Pages can either be static or dynamic, which means that only render static content or that they can load content 
+Pages can either be static or dynamic, which means that they only render static content or that they can load content 
 in your application lifecycle and render the dynamically loaded content.
 
 ## Pages
@@ -15,9 +15,6 @@ in your application lifecycle and render the dynamically loaded content.
 This is the most minimal way to define a page.
 
 ```js
-import layout from "../layouts/base.js";
-export { layout };
-
 export default () => {
     return `
         <h1>This is a static page defined by using an anonymous function</h1>
@@ -34,7 +31,7 @@ You can read more about components in [the components section](/components).
 
 ```js
 export default class {
-    static async loadStaticProperties({ request, response }) {
+    static async loadStaticProperties() {
         return {
             static: true,
         };
@@ -54,3 +51,33 @@ export default class {
 
 The `loadDynamicProperties` method can be used to load data on each request. `loadStaticProperties` can be used
 to load data once at luna startup.
+
+
+## Rendering engines
+
+Just like standard component, component pages can be rendered with a custom rendering engine. To use a custom rendering
+engine you just have to define the factory which contains the engine inside your `pages` section of your `luna.config.js`.
+
+```js
+// luna.config.js
+{
+    pages: {
+        input: [],
+        factory: require('@webtides/luna-renderer/lib/element-js'),
+    },
+}
+```
+
+**Example of a page that uses the `element-js` rendering engine.**
+
+```js
+import { html } from '@webtides/element-js/src/renderer/vanilla';
+
+export default class {
+    template() {
+        return html`
+            I am rendered with the vanilla renderer from element-js.
+        `;
+    }
+}
+```

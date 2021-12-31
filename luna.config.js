@@ -14,6 +14,10 @@ module.exports = {
         livereload: true
     },
 
+    layouts: {
+        input: [path.join(__dirname, "views", "layouts")],
+    },
+
     pages: {
         input: [path.join(__dirname, "views", "pages")],
         fallback: '/document'

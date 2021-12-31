@@ -49,7 +49,7 @@ async loadDynamicProperties({ request, response }) {
 
 ## Making properties available on the client
 
-Which properties are made available to the client depends on the `renderer` that is being used. The default renderer
+Which properties are made available to the client depends on the `factory` that is being used. The default factory
 for basic `HTMLElement` makes, in addition to the attributes, all properties available to the client which are loaded
 using the `loadDynamicProperties` or `loadStaticProperties` methods.
 

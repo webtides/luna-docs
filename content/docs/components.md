@@ -18,7 +18,8 @@ bundle contains the element definition and additional information about the buil
 
 ### Define a bundle in your `luna.config.js`
 
-```
+```js
+// luna.config.js
 components: {
     bundles: [{
         // The directory in which you define your elements
@@ -95,11 +96,51 @@ export default class HeaderElement extends HTMLElement {
 
 ### Render engine
 
-Luna does not ship with it's own render engine, but allows different engines to be plugged in. The following first class
-render engines can be found inside the `@webtides/luna-renderer` npm package:
+Luna does not ship with it's own render engine, but allows different engines to be plugged in by using a 
+dedicated factory. The following first class factories can be found inside the `@webtides/luna-renderer` npm package:
 
-- @webtides/element-js
-- LitElement
+- `@webtides/element-js`
+- `lit`
+
+#### Use a render engine
+
+To use a different render engine you need to specify the factory which includes the engine inside 
+a components bundle.
+
+```js
+// luna.config.js
+
+components: {
+  bundles: [{
+    input: path.join(__dirname, "views/components"),
+    output: "assets",
+    
+    // Use the factory for element-js. It includes a server rendering engine which is
+    // compatible with the engine used by element-js
+    factory: require('@webtides/luna-renderer/lib/element-js'),
+  }]
+},
+```
+**Example of a component that uses the `element-js` rendering engine.**
+
+```js
+// example-component.js
+
+import { Component } from '@webtides/luna-js';
+import { html, TemplateElement } from '@webtides/element-js/src/renderer/vanilla';
+
+@Component({
+  target: Component.TARGET_BOTH,
+})
+export default class ExampleComponent extends TemplateElement {
+    template() {
+        return html`
+            I am rendered with the vanilla renderer from element-js.
+        `;
+    }
+}
+```
+*The vanilla renderer from element-js supports server rendering and client side hydration*
 
 ## Non-rendering components
 
@@ -108,7 +149,7 @@ Components that don't render, can just omit the `template` getter.
 ```js
 export default class ClientElement extends HTMLElement {
 
-    connected() {
+    connectedCallback() {
         console.log("ClientElement has connected.");
     }
 }
